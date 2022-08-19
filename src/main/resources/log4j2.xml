@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 0809 -->
+<Configuration status="info">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT"><!-- [%C] %-5level %logger{36} - %msg -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" /> <!-- 0805 로그 너무 길어서 저거 주석처리함 -->
+        </Console>
+        <!-- 0816 log4jdbc 추가 -->
+        <File name="log4jdbc_file" fileName="log4jdbc.out">
+      		<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %level - %m%n%ex%n"/>
+    	</File>
+    </appenders>
+    
+    <loggers>
+        <root level="info">
+            <appender-ref ref="Console" />
+        </root>
+        <!-- 0816 log4jdbc 추가 -->
+        <logger name="log4jdbc.log4j2" level="info" additivity="false">
+         <MarkerFilter marker="LOG4JDBC_CONNECTION" onMatch="ACCEPT" onMismatch="DENY"/> <!-- 여기서 값을 바꿔서 원하는 결과만 볼 수 있다 -->
+     	<appender-ref ref="Console"/>
+      </logger>
+    </loggers>
+</Configuration>
+  <!--  <appender-ref ref="log4jdbc_file"/>  -->

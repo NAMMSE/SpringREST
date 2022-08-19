@@ -12,6 +12,7 @@
 		<org.springframework-version>5.2.2.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<log4j2-version>2.18.0</log4j2-version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -71,12 +72,36 @@
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
 		</dependency>
+			<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-api</artifactId>
+		<version>${log4j2-version}</version> <!-- 이렇게 쓸 수 있다 -->
+	</dependency>
+	<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-core</artifactId>
+		<version>${log4j2-version}</version>
+	</dependency>
 		<!-- 0816 log4j 추가 -->
 		<dependency>
    			 <groupId>log4j</groupId>
     		<artifactId>log4j</artifactId>
     		<version>1.2.17</version>
 		</dependency>
+		
+			<!-- 0817 log4jdbc 로그 안찍혀서 추가 -->
+		<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    	<artifactId>log4j-1.2-api</artifactId>
+	    	<version>${log4j2-version}</version>
+		</dependency>
+				
+		<dependency>
+		    <groupId>org.bgee.log4jdbc-log4j2</groupId>
+		    <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+		    <version>1.16</version>
+		</dependency>
+				
 		
 
 		<!-- @Inject -->
@@ -114,7 +139,7 @@
 			<version>1.2</version>
 		</dependency>
 		
-		<dependency> <!-- 0809 히카리cp -->
+		<dependency> <!-- 0816 히카리cp -->
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
 			<version>4.0.3</version>
